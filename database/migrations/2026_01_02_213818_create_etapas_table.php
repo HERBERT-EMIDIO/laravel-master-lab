@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('etapas', function (Blueprint $table) {
             $table->id();
-            $table->string('dscricao');
-          
-            $table->foreignId('frete_id')->constrained('fretes')->onDelete('cascade');
 
+            $table->string('descricao');
+
+            $table->string('frete_id')->constrained('fretes')->onDelete('cascade');
+ 
             $table->timestamps();
         });
     }

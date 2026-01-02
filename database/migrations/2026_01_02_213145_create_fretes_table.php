@@ -1,6 +1,5 @@
 <?php
 
-use GuzzleHttp\Client;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +20,7 @@ return new class extends Migration
 
             $table->foreignId('remetente_id')->constrained('clientes')->onDelete('cascade');
             $table->foreignId('destinatario_id')->constrained('clientes')->onDelete('cascade');
-                       
+            
             $table->timestamps();
         });
     }
