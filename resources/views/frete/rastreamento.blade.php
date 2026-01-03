@@ -14,7 +14,9 @@
                 </span>
             </p>
             <p class="mt-2">
-                Destino: <span class="font-semibold">{{ $frete->destino }}</span>
+                Destino: <span class="font-semibold">
+                    {{ $frete->destino }}
+                </span>
             </p>
         </div>
 
@@ -30,13 +32,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover:bg-gray-50 transition-colors border-b">
-                    <td class="px-6 py-4">
-                        Transferido da unidade A para unidade B
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        01/05/2026
-                    </td>
+                @foreach ($frete->etapas as $etapa)
+                    <tr class="hover:bg-gray-50 transition-colors border-b">
+                        <td class="px-6 py-4">
+                            {{ $etapa->descricao}}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            {{ $etapa->create_at}}
+                            
+                        </td>
+                @endforeach
                 </tr>
             </tbody>
         </table>
