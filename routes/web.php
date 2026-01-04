@@ -9,4 +9,4 @@ use Illuminate\Support\Facades\Route;
 //Controller
 route::get('/', HomeController::class);
 //RastreamantoController
-route::get('/rastreamento',RastreamentoController::class);
+route::get('/rastreamento',RastreamentoController::class)->name('frete.rastreamento');
