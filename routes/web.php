@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoricoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RastreamentoController;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 
 //Controller
-route::get('/', HomeController::class);
+Route::get('/', HomeController::class);
 //RastreamantoController
-route::get('/rastreamento',RastreamentoController::class)->name('frete.rastreamento');
+Route::get('/rastreamento',RastreamentoController::class)->name('frete.rastreamento');
+//HistoricoController
+Route::get('/historico',HistoricoController::class)->name('frete.historico');
