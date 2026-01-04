@@ -25,7 +25,9 @@
                     </h2>
                     <form action="{{ route('frete.historico') }}" method="GET">
                         <div class="relative w-full max-w-md">
-                            <input type="tel" name="telefone" placeholder="Número de telefone"
+                           
+                           
+                            <input type="tel" name="telefone" oninput="aplicarMascaraTelefone(this)" placeholder="Número de telefone"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                 oninput="aplicarMascaraTelefone(this)" maxlength="15">
                             <button type="submit"
@@ -40,4 +42,34 @@
             <img src='/entrega.webp' alt="Placeholder" class="object-cover w-full h-full">
         </div>
     </div>
+
+    <script>
+        /**
+         * Aplica uma máscara de telefone brasileira dinamicamente
+         * Padrão: (XX) XXXXX-XXXX
+         */
+        const aplicarMascaraTelefone = function(input) {
+            // 1. Remove tudo o que não for número (RegEx)
+            let valor = input.value.replace(/\D/g, "");
+
+            // 2. Adiciona o parêntese de abertura do DDD
+            if (valor.length > 0) {
+                valor = "(" + valor;
+            }
+
+            // 3. Adiciona o parêntese de fechamento do DDD após os 2 primeiros números
+            if (valor.length > 3) {
+                valor = valor.slice(0, 3) + ") " + valor.slice(3);
+            }
+
+            // 4. Adiciona o hífen após o 5º dígito do número (considerando DDD + espaço + parênteses)
+            if (valor.length > 10) {
+                valor = valor.slice(0, 10) + "-" + valor.slice(10);
+            }
+
+            // 5. Limita o valor final ao máximo de 15 caracteres: (99) 99999-9999
+            input.value = valor.slice(0, 15);
+        };
+    </script>
+
 </x-layout>
