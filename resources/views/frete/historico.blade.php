@@ -49,7 +49,7 @@
                             {{ $frete->destino }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 py-1 rounded-full bg-green-500 text-white">
+                            <span class="px-2 py-1 rounded-full{{ $frete->status->pegarCorEtiqueta() }}">
                                 {{ $frete->status }}
                             </span>
                         </td>
@@ -83,7 +83,7 @@
                 </tr>
             </thead>
             <tbody>
-               @foreach ($cliente->recebidos as $frete)
+                @foreach ($cliente->recebidos as $frete)
                     <tr class="hover:bg-gray-50 transition-colors border-b">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <a href="{{ route('frete.rastreamento', ['codigo_rastreio' => $frete->codigo_rastreio]) }}"
@@ -98,7 +98,7 @@
                             {{ $frete->destino }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 py-1 rounded-full bg-green-500 text-white">
+                            <span class="px-2 py-1 rounded-full {{ $frete->status->pegarCorEtiqueta() }}">
                                 {{ $frete->status }}
                             </span>
                         </td>
